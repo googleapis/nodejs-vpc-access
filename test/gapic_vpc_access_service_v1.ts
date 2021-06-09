@@ -28,9 +28,10 @@ import {PassThrough} from 'stream';
 import {protobuf, LROperation, operationsProtos} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (
-    instance.constructor as typeof protobuf.Message
-  ).toObject(instance as protobuf.Message<T>, {defaults: true});
+  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
+    instance as protobuf.Message<T>,
+    {defaults: true}
+  );
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -280,8 +281,9 @@ describe('v1.VpcAccessServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.vpcaccess.v1.Connector()
       );
-      client.innerApiCalls.getConnector =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.getConnector = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.getConnector(
           request,
@@ -360,8 +362,9 @@ describe('v1.VpcAccessServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.createConnector =
-        stubLongRunningCall(expectedResponse);
+      client.innerApiCalls.createConnector = stubLongRunningCall(
+        expectedResponse
+      );
       const [operation] = await client.createConnector(request);
       const [response] = await operation.promise();
       assert.deepStrictEqual(response, expectedResponse);
@@ -393,8 +396,9 @@ describe('v1.VpcAccessServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.createConnector =
-        stubLongRunningCallWithCallback(expectedResponse);
+      client.innerApiCalls.createConnector = stubLongRunningCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.createConnector(
           request,
@@ -554,8 +558,9 @@ describe('v1.VpcAccessServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.deleteConnector =
-        stubLongRunningCall(expectedResponse);
+      client.innerApiCalls.deleteConnector = stubLongRunningCall(
+        expectedResponse
+      );
       const [operation] = await client.deleteConnector(request);
       const [response] = await operation.promise();
       assert.deepStrictEqual(response, expectedResponse);
@@ -587,8 +592,9 @@ describe('v1.VpcAccessServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.deleteConnector =
-        stubLongRunningCallWithCallback(expectedResponse);
+      client.innerApiCalls.deleteConnector = stubLongRunningCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.deleteConnector(
           request,
@@ -783,8 +789,9 @@ describe('v1.VpcAccessServiceClient', () => {
         generateSampleMessage(new protos.google.cloud.vpcaccess.v1.Connector()),
         generateSampleMessage(new protos.google.cloud.vpcaccess.v1.Connector()),
       ];
-      client.innerApiCalls.listConnectors =
-        stubSimpleCallWithCallback(expectedResponse);
+      client.innerApiCalls.listConnectors = stubSimpleCallWithCallback(
+        expectedResponse
+      );
       const promise = new Promise((resolve, reject) => {
         client.listConnectors(
           request,
@@ -856,8 +863,9 @@ describe('v1.VpcAccessServiceClient', () => {
         generateSampleMessage(new protos.google.cloud.vpcaccess.v1.Connector()),
         generateSampleMessage(new protos.google.cloud.vpcaccess.v1.Connector()),
       ];
-      client.descriptors.page.listConnectors.createStream =
-        stubPageStreamingCall(expectedResponse);
+      client.descriptors.page.listConnectors.createStream = stubPageStreamingCall(
+        expectedResponse
+      );
       const stream = client.listConnectorsStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.google.cloud.vpcaccess.v1.Connector[] = [];
@@ -882,9 +890,10 @@ describe('v1.VpcAccessServiceClient', () => {
           .calledWith(client.innerApiCalls.listConnectors, request)
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listConnectors.createStream as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listConnectors
+          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -901,8 +910,10 @@ describe('v1.VpcAccessServiceClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listConnectors.createStream =
-        stubPageStreamingCall(undefined, expectedError);
+      client.descriptors.page.listConnectors.createStream = stubPageStreamingCall(
+        undefined,
+        expectedError
+      );
       const stream = client.listConnectorsStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.google.cloud.vpcaccess.v1.Connector[] = [];
@@ -926,9 +937,10 @@ describe('v1.VpcAccessServiceClient', () => {
           .calledWith(client.innerApiCalls.listConnectors, request)
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listConnectors.createStream as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listConnectors
+          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -949,8 +961,9 @@ describe('v1.VpcAccessServiceClient', () => {
         generateSampleMessage(new protos.google.cloud.vpcaccess.v1.Connector()),
         generateSampleMessage(new protos.google.cloud.vpcaccess.v1.Connector()),
       ];
-      client.descriptors.page.listConnectors.asyncIterate =
-        stubAsyncIterationCall(expectedResponse);
+      client.descriptors.page.listConnectors.asyncIterate = stubAsyncIterationCall(
+        expectedResponse
+      );
       const responses: protos.google.cloud.vpcaccess.v1.IConnector[] = [];
       const iterable = client.listConnectorsAsync(request);
       for await (const resource of iterable) {
@@ -958,15 +971,15 @@ describe('v1.VpcAccessServiceClient', () => {
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.listConnectors.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.listConnectors
+          .asyncIterate as SinonStub).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listConnectors.asyncIterate as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listConnectors
+          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
@@ -983,8 +996,10 @@ describe('v1.VpcAccessServiceClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listConnectors.asyncIterate =
-        stubAsyncIterationCall(undefined, expectedError);
+      client.descriptors.page.listConnectors.asyncIterate = stubAsyncIterationCall(
+        undefined,
+        expectedError
+      );
       const iterable = client.listConnectorsAsync(request);
       await assert.rejects(async () => {
         const responses: protos.google.cloud.vpcaccess.v1.IConnector[] = [];
@@ -993,15 +1008,15 @@ describe('v1.VpcAccessServiceClient', () => {
         }
       });
       assert.deepStrictEqual(
-        (
-          client.descriptors.page.listConnectors.asyncIterate as SinonStub
-        ).getCall(0).args[1],
+        (client.descriptors.page.listConnectors
+          .asyncIterate as SinonStub).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (
-          client.descriptors.page.listConnectors.asyncIterate as SinonStub
-        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
+        (client.descriptors.page.listConnectors
+          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
+          'x-goog-request-params'
+        ],
         expectedHeaderRequestParams
       );
     });
