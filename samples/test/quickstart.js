@@ -29,7 +29,7 @@ const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
 const cwd = path.join(__dirname, '..');
 
-const client = new {VpcAccessServiceClient}();
+const client = new VpcAccessServiceClient();
 
 describe('Quickstart', () => {
   //TODO: remove this if not using the projectId
