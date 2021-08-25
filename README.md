@@ -4,7 +4,7 @@
 
 # [Virtual Private Cloud: Node.js Client](https://github.com/googleapis/nodejs-vpc-access)
 
-[![release level](https://img.shields.io/badge/release%20level-beta-yellow.svg?style=flat)](https://cloud.google.com/terms/launch-stages)
+[![release level](https://img.shields.io/badge/release%20level-general%20availability%20%28GA%29-brightgreen.svg?style=flat)](https://cloud.google.com/terms/launch-stages)
 [![npm version](https://img.shields.io/npm/v/@google-cloud/vpc-access.svg)](https://www.npmjs.org/package/@google-cloud/vpc-access)
 [![codecov](https://img.shields.io/codecov/c/github/googleapis/nodejs-vpc-access/master.svg?style=flat)](https://codecov.io/gh/googleapis/nodejs-vpc-access)
 
