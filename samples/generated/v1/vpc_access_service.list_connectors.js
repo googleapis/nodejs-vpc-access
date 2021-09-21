@@ -12,27 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(parent, connectorId, connector) {
-  // [START vpcaccess_create_connector_sample]
+function main(parent) {
+  // [START vpcaccess_list_connectors_sample]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. The project and location in which the configuration should be created,
-   *  specified in the format `projects/* /locations/*`.
+   *  Required. The project and location from which the routes should be listed.
    */
   // const parent = 'abc123'
   /**
-   *  Required. The ID to use for this connector.
+   *  Maximum number of functions to return per call.
    */
-  // const connectorId = 'abc123'
+  // const pageSize = 1234
   /**
-   *  Required. Resource to create.
+   *  Continuation token.
    */
-  // const connector = ''
+  // const pageToken = 'abc123'
 
   // Imports the Vpcaccess library
   const {VpcAccessServiceClient} = require('@google-cloud/vpc-access').v1;
@@ -40,22 +38,21 @@ function main(parent, connectorId, connector) {
   // Instantiates a client
   const vpcaccessClient = new VpcAccessServiceClient();
 
-  async function createConnector() {
+  async function listConnectors() {
     // Construct request
     const request = {
       parent,
-      connectorId,
-      connector,
     };
 
     // Run request
-    const [operation] = await vpcaccessClient.createConnector(request);
-    const [response] = await operation.promise();
-    console.log(response);
+    const iterable = await vpcaccessClient.listConnectorsAsync(request);
+    for await (const response of iterable) {
+      console.log(response);
+    }
   }
 
-  createConnector();
-  // [END vpcaccess_create_connector_sample]
+  listConnectors();
+  // [END vpcaccess_list_connectors_sample]
 }
 
 process.on('unhandledRejection', err => {

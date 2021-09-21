@@ -12,26 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(parent) {
-  // [START vpcaccess_list_connectors_sample]
+function main(name) {
+  // [START vpcaccess_get_connector_sample]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. The project and location from which the routes should be listed.
+   *  Required. Name of a Serverless VPC Access connector to get.
    */
-  // const parent = 'abc123'
-  /**
-   *  Maximum number of functions to return per call.
-   */
-  // const pageSize = 1234
-  /**
-   *  Continuation token.
-   */
-  // const pageToken = 'abc123'
+  // const name = 'abc123'
 
   // Imports the Vpcaccess library
   const {VpcAccessServiceClient} = require('@google-cloud/vpc-access').v1;
@@ -39,21 +30,19 @@ function main(parent) {
   // Instantiates a client
   const vpcaccessClient = new VpcAccessServiceClient();
 
-  async function listConnectors() {
+  async function getConnector() {
     // Construct request
     const request = {
-      parent,
+      name,
     };
 
     // Run request
-    const iterable = await vpcaccessClient.listConnectorsAsync(request);
-    for await (const response of iterable) {
-        console.log(response);
-    }
+    const response = await vpcaccessClient.getConnector(request);
+    console.log(response);
   }
 
-  listConnectors();
-  // [END vpcaccess_list_connectors_sample]
+  getConnector();
+  // [END vpcaccess_get_connector_sample]
 }
 
 process.on('unhandledRejection', err => {

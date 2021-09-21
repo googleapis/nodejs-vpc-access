@@ -408,6 +408,10 @@ export class VpcAccessServiceClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.getConnector(request);
+   *
+   * @example <caption>include:samples/generated/v1/vpc_access_service.get_connector.js</caption>
+   * region_tag:vpcaccess_get_connector_sample
+   *
    */
   getConnector(
     request?: protos.google.cloud.vpcaccess.v1.IGetConnectorRequest,
@@ -511,6 +515,10 @@ export class VpcAccessServiceClient {
    * @example
    * const [operation] = await client.createConnector(request);
    * const [response] = await operation.promise();
+   *
+   * @example <caption>include:samples/generated/v1/vpc_access_service.create_connector.js</caption>
+   * region_tag:vpcaccess_create_connector_sample
+   *
    */
   createConnector(
     request?: protos.google.cloud.vpcaccess.v1.ICreateConnectorRequest,
@@ -574,6 +582,10 @@ export class VpcAccessServiceClient {
    * console.log(decodedOperation.result);
    * console.log(decodedOperation.done);
    * console.log(decodedOperation.metadata);
+   *
+   * @example <caption>include:samples/generated/v1/vpc_access_service.create_connector.js</caption>
+   * region_tag:vpcaccess_create_connector_sample
+   *
    */
   async checkCreateConnectorProgress(
     name: string
@@ -653,6 +665,10 @@ export class VpcAccessServiceClient {
    * @example
    * const [operation] = await client.deleteConnector(request);
    * const [response] = await operation.promise();
+   *
+   * @example <caption>include:samples/generated/v1/vpc_access_service.delete_connector.js</caption>
+   * region_tag:vpcaccess_delete_connector_sample
+   *
    */
   deleteConnector(
     request?: protos.google.cloud.vpcaccess.v1.IDeleteConnectorRequest,
@@ -716,6 +732,10 @@ export class VpcAccessServiceClient {
    * console.log(decodedOperation.result);
    * console.log(decodedOperation.done);
    * console.log(decodedOperation.metadata);
+   *
+   * @example <caption>include:samples/generated/v1/vpc_access_service.delete_connector.js</caption>
+   * region_tag:vpcaccess_delete_connector_sample
+   *
    */
   async checkDeleteConnectorProgress(
     name: string
@@ -793,6 +813,10 @@ export class VpcAccessServiceClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v1/vpc_access_service.list_connectors.js</caption>
+   * region_tag:vpcaccess_list_connectors_sample
+   *
    */
   listConnectors(
     request?: protos.google.cloud.vpcaccess.v1.IListConnectorsRequest,
@@ -859,6 +883,10 @@ export class VpcAccessServiceClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v1/vpc_access_service.list_connectors.js</caption>
+   * region_tag:vpcaccess_list_connectors_sample
+   *
    */
   listConnectorsStream(
     request?: protos.google.cloud.vpcaccess.v1.IListConnectorsRequest,
@@ -872,7 +900,8 @@ export class VpcAccessServiceClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listConnectors'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listConnectors.createStream(
       this.innerApiCalls.listConnectors as gax.GaxCall,
@@ -908,6 +937,10 @@ export class VpcAccessServiceClient {
    * for await (const response of iterable) {
    *   // process response
    * }
+   *
+   * @example <caption>include:samples/generated/v1/vpc_access_service.list_connectors.js</caption>
+   * region_tag:vpcaccess_list_connectors_sample
+   *
    */
   listConnectorsAsync(
     request?: protos.google.cloud.vpcaccess.v1.IListConnectorsRequest,
@@ -922,7 +955,8 @@ export class VpcAccessServiceClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listConnectors'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listConnectors.asyncIterate(
       this.innerApiCalls['listConnectors'] as GaxCall,
