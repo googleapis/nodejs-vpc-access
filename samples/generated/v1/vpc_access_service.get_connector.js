@@ -12,16 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
 function main(name) {
-  // [START vpcaccess_v1_generated_VpcAccessService_DeleteConnector_async]
+  // [START vpcaccess_v1_generated_VpcAccessService_GetConnector_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. Name of a Serverless VPC Access connector to delete.
+   *  Required. Name of a Serverless VPC Access connector to get.
    */
   // const name = 'abc123'
 
@@ -31,20 +30,19 @@ function main(name) {
   // Instantiates a client
   const vpcaccessClient = new VpcAccessServiceClient();
 
-  async function deleteConnector() {
+  async function getConnector() {
     // Construct request
     const request = {
       name,
     };
 
     // Run request
-    const [operation] = await vpcaccessClient.deleteConnector(request);
-    const [response] = await operation.promise();
+    const response = await vpcaccessClient.getConnector(request);
     console.log(response);
   }
 
-  deleteConnector();
-  // [END vpcaccess_v1_generated_VpcAccessService_DeleteConnector_async]
+  getConnector();
+  // [END vpcaccess_v1_generated_VpcAccessService_GetConnector_async]
 }
 
 process.on('unhandledRejection', err => {

@@ -872,7 +872,8 @@ export class VpcAccessServiceClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listConnectors'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listConnectors.createStream(
       this.innerApiCalls.listConnectors as gax.GaxCall,
@@ -922,7 +923,8 @@ export class VpcAccessServiceClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listConnectors'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listConnectors.asyncIterate(
       this.innerApiCalls['listConnectors'] as GaxCall,

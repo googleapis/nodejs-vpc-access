@@ -12,27 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(parent, connectorId, connector) {
-  // [START vpcaccess_v1_generated_VpcAccessService_CreateConnector_async]
+function main(name) {
+  // [START vpcaccess_v1_generated_VpcAccessService_DeleteConnector_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. The project and location in which the configuration should be created,
-   *  specified in the format `projects/* /locations/*`.
+   *  Required. Name of a Serverless VPC Access connector to delete.
    */
-  // const parent = 'abc123'
-  /**
-   *  Required. The ID to use for this connector.
-   */
-  // const connectorId = 'abc123'
-  /**
-   *  Required. Resource to create.
-   */
-  // const connector = ''
+  // const name = 'abc123'
 
   // Imports the Vpcaccess library
   const {VpcAccessServiceClient} = require('@google-cloud/vpc-access').v1;
@@ -40,22 +30,20 @@ function main(parent, connectorId, connector) {
   // Instantiates a client
   const vpcaccessClient = new VpcAccessServiceClient();
 
-  async function createConnector() {
+  async function deleteConnector() {
     // Construct request
     const request = {
-      parent,
-      connectorId,
-      connector,
+      name,
     };
 
     // Run request
-    const [operation] = await vpcaccessClient.createConnector(request);
+    const [operation] = await vpcaccessClient.deleteConnector(request);
     const [response] = await operation.promise();
     console.log(response);
   }
 
-  createConnector();
-  // [END vpcaccess_v1_generated_VpcAccessService_CreateConnector_async]
+  deleteConnector();
+  // [END vpcaccess_v1_generated_VpcAccessService_DeleteConnector_async]
 }
 
 process.on('unhandledRejection', err => {
