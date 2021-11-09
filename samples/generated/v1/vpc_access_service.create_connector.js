@@ -12,18 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(name) {
-  // [START vpcaccess_v1_generated_VpcAccessService_GetConnector_async]
+function main(parent, connectorId, connector) {
+  // [START vpcaccess_v1_generated_VpcAccessService_CreateConnector_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. Name of a Serverless VPC Access connector to get.
+   *  Required. The project and location in which the configuration should be created,
+   *  specified in the format `projects/* /locations/*`.
    */
-  // const name = 'abc123'
+  // const parent = 'abc123'
+  /**
+   *  Required. The ID to use for this connector.
+   */
+  // const connectorId = 'abc123'
+  /**
+   *  Required. Resource to create.
+   */
+  // const connector = {}
 
   // Imports the Vpcaccess library
   const {VpcAccessServiceClient} = require('@google-cloud/vpc-access').v1;
@@ -31,19 +39,22 @@ function main(name) {
   // Instantiates a client
   const vpcaccessClient = new VpcAccessServiceClient();
 
-  async function callGetConnector() {
+  async function callCreateConnector() {
     // Construct request
     const request = {
-      name,
+      parent,
+      connectorId,
+      connector,
     };
 
     // Run request
-    const response = await vpcaccessClient.getConnector(request);
+    const [operation] = await vpcaccessClient.createConnector(request);
+    const [response] = await operation.promise();
     console.log(response);
   }
 
-  callGetConnector();
-  // [END vpcaccess_v1_generated_VpcAccessService_GetConnector_async]
+  callCreateConnector();
+  // [END vpcaccess_v1_generated_VpcAccessService_CreateConnector_async]
 }
 
 process.on('unhandledRejection', err => {
